@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy 25th Birthday Nikkie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #000;
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+    .page-wrapper {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    section.page {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* FIRST PAGE */
+    .page-hero {
+      background-image: url("birthday-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: fadeInHero 1.4s ease forwards;
+    }
+    @keyframes fadeInHero {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      color: #ffd86b;
+      text-shadow: 0 0 16px rgba(0,0,0,0.9);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 1.3s ease 0.4s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(20px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    /* Slideshow frames */
+    .slider-frame,
+    .slider-frame-2 {
+      width: min(80vw, 720px);
+      aspect-ratio: 16/9;
+      margin: auto;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.8);
+      background: #000;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.7);
+      position: relative;
+    }
+
+    .slider-frame {
+      opacity: 0;
+      animation: fadeUp 1.3s ease 1s forwards;
+    }
+
+    .slider-frame img,
+    .slider-frame-2 img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slider-frame img.active,
+    .slider-frame-2 img.active {
+      opacity: 1;
+    }
+
+    #bg-music,
+    #bg-music-2 {
+      margin-top: 1.2rem;
+      width: min(80vw, 720px);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.45);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+    }
+
+    .scroll-note {
+      margin-top: 1rem;
+      opacity: 0.9;
+      font-size: 0.9rem;
+      animation: fadeUp 1.3s ease 2s forwards;
+    }
+
+    /* SECOND PAGE */
+    .page-message {
+      background: #111;
+      padding: 3rem;
+    }
+    .message-inner {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0,0,0,0.7);
+      padding: 2rem 2rem 3rem;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .message-inner h2 {
+      font-family: "Great Vibes", cursive;
+      color: #ffd86b;
+      font-size: 2.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .punjabi-line {
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    /* THIRD PAGE */
+    .page-lyrics {
+      background: #0d0d0d;
+      padding: 3rem;
+    }
+    .lyrics-inner {
+      max-width: 850px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 1.2rem;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .lyric-line {
+      opacity: 0.25;
+      transition: 1s;
+    }
+    .lyric-line.active {
+      opacity: 1;
+      color: #ffd86b;
+      text-shadow: 0 0 12px rgba(255,216,107,0.8);
+    }
+
+    /* PARTY POPPERS */
+    .party-popper {
+      position: fixed;
+      bottom: 12px;
+      z-index: 30;
+      pointer-events: none;
+    }
+    .party-popper img {
+      width: 200px;
+      height: auto;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+    }
+    .party-popper.left { left: 12px; transform: rotate(-10deg); }
+    .party-popper.right { right: 12px; transform: scaleX(-1) rotate(-10deg); }
+  </style>
+</head>
+
+<body>
+
+  <div class="party-popper left"><img src="popper.gif"></div>
+  <div class="party-popper right"><img src="popper.gif"></div>
+
+  <div class="page-wrapper">
+
+    <!-- PAGE 1 -->
+    <section class="page page-hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Happy 25th Birthday Nikkie</h1>
+
+        <div class="slider-frame">
+          <img src="photo1.jpg" class="slide slide1 active">
+          <img src="photo2.jpg" class="slide slide1">
+          <img src="photo3.jpg" class="slide slide1">
+          <img src="photo4.jpg" class="slide slide1">
+          <img src="photo5.jpg" class="slide slide1">
+        </div>
+
+        <audio id="bg-music" loop controls>
+          <source src="birthday.mp3" type="audio/mpeg">
+        </audio>
+
+        <p class="scroll-note">Tap once anywhere to start the music, then scroll down to explore</p>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page page-message" id="page2">
+      <div class="message-inner">
+        <h2>From My Heart To Yours</h2>
+        <p class="punjabi-line">
+          Tennu jinna samjhda janna haan, lafz ghat pe jande ne,<br>
+          te jadd vi tennu sochn lagda haan, mere supne sach.
+        </p>
+
+        <div class="slider-frame-2">
+          <img src="photo6.jpg" class="slide slide2 active">
+          <img src="photo7.jpg" class="slide slide2">
+          <img src="photo8.jpg" class="slide slide2">
+          <img src="photo9.jpg" class="slide slide2">
+        </div>
+
+        <audio id="bg-music-2" controls>
+          <source src="birthday2.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page page-lyrics">
+      <div class="lyrics-inner">
+        <div class="lyric-line">Wishing you joy beyond measure…</div>
+        <div class="lyric-line">A year full of love and blessings…</div>
+        <div class="lyric-line">Dreams becoming reality…</div>
+        <div class="lyric-line">Smiles that never fade…</div>
+        <div class="lyric-line">And memories that last forever ❤️</div>
+      </div>
+    </section>
+  </div>
+
+<script>
+  /* Slideshow 1 */
+  const slides1 = document.querySelectorAll(".slide1");
+  let idx1 = 0;
+  setInterval(() => {
+    slides1[idx1].classList.remove("active");
+    idx1 = (idx1 + 1) % slides1.length;
+    slides1[idx1].classList.add("active");
+  }, 3000);
+
+  /* Slideshow 2 */
+  const slides2 = document.querySelectorAll(".slide2");
+  let idx2 = 0;
+  setInterval(() => {
+    slides2[idx2].classList.remove("active");
+    idx2 = (idx2 + 1) % slides2.length;
+    slides2[idx2].classList.add("active");
+  }, 3000);
+
+  /* Music logic */
+  const audio1 = document.getElementById("bg-music");
+  const audio2 = document.getElementById("bg-music-2");
+  const hero = document.getElementById("hero");
+  const page2 = document.getElementById("page2");
+
+  let started1 = false, stopped1 = false;
+  let started2 = false, stopped2 = false;
+
+  /* Start Page-1 song on first click anywhere */
+  document.addEventListener("click", () => {
+    if (!started1 && !stopped1) {
+      audio1.play().catch(()=>{});
+      started1 = true;
+    }
+  }, { once: true });
+
+  /* Stop Page-1 song when leaving Page-1 */
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting && !stopped1) {
+        audio1.pause();
+        stopped1 = true;
+      }
+    });
+  }, { threshold: 0.6 }).observe(hero);
+
+  /* Autoplay Page-2 song once when entering Page-2 */
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !started2 && !stopped2) {
+        audio2.play().catch(()=>{});
+        started2 = true;
+      } else if (!e.isIntersecting && started2 && !stopped2) {
+        audio2.pause();
+        stopped2 = true;
+      }
+    });
+  }, { threshold: 0.6 }).observe(page2);
+
+  /* Lyrics animation */
+  const lines = document.querySelectorAll(".lyric-line");
+  let li = 0;
+  setInterval(() => {
+    lines.forEach(l => l.classList.remove("active"));
+    lines[li].classList.add("active");
+    li = (li + 1) % lines.length;
+  }, 4000);
+</script>
+
+</body>
+</html>
